@@ -1,0 +1,184 @@
+/* We can reuse many styles from login, so we'll extend or mirror them here */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn var(--transition-smooth);
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 480px; /* Um pouco mais largo que o login */
+  padding: 40px;
+  display: flex; flex-direction: column; gap: 24px;
+  border-radius: var(--radius-lg);
+  animation: slideUp var(--transition-smooth);
+  background: var(--bg-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-container { background: var(--bg-surface); }
+}
+
+.close-btn {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; color: var(--text-muted); cursor: pointer;
+  font-size: 1.25rem; padding: 8px; border-radius: 50%;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.close-btn:hover { color: var(--text-primary); background-color: var(--border-subtle); }
+.modal-header { text-align: center; margin-bottom: 8px; }
+.modal-title { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 8px; }
+.font-serif { font-family: var(--font-serif); }
+.modal-subtitle { color: var(--text-secondary); font-size: 0.95rem; }
+
+/* ACCOUNT TYPE SELECTOR */
+.account-type-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.type-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+.type-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  transition: border-color var(--transition-smooth);
+  pointer-events: none;
+}
+
+.type-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.02);
+}
+
+.type-card.selected {
+  background: rgba(212, 175, 55, 0.05); /* very light gold tint */
+  border-color: var(--color-gold-base); /* active states usually get base */
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+}
+
+.type-card.selected::before {
+  border-color: var(--color-gold-base);
+}
+
+.type-icon {
+  font-size: 1.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  transition: color var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.type-card.selected .type-icon {
+  color: var(--color-gold-base);
+  transform: scale(1.1);
+}
+
+.type-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.type-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.type-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.selection-indicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle);
+  transition: all var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-card.selected .selection-indicator {
+  border-color: var(--color-gold-base);
+  background: var(--color-gold-base);
+}
+
+/* FORM ELEMENTS */
+.register-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+
+label { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+
+input {
+  background: var(--bg-base); border: 1px solid var(--border-subtle);
+  color: var(--text-primary); padding: 12px 16px; border-radius: var(--radius-sm);
+  font-family: var(--font-sans); font-size: 1rem; outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+input:focus {
+  border-color: var(--color-gold-base);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.form-actions-extended {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-gold-base) 0%, var(--color-gold-dark) 100%);
+  color: #fff; border: none; padding: 14px 24px; border-radius: var(--radius-sm);
+  font-size: 1rem; font-weight: 600; font-family: var(--font-sans); cursor: pointer;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
+
+.modal-footer {
+  text-align: center; font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;
+}
+.modal-footer a,.modal-footer button  {
+  color: var(--color-gold-base);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  background: none; border: none; font-size: inherit; cursor: pointer; padding: 0;
+}
+.modal-footer a:hover, .modal-footer button:hover { color: var(--color-gold-light); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

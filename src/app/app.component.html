@@ -5,13 +5,13 @@
     <p class="hero-description">
       Uma plataforma desenhada para quem busca conhecimento de verdade, sem distrações e com foco total na excelência.
     </p>
-    <button class="hero-btn">Juntar-se à lista de espera</button>
+    <button class="hero-btn" (click)="openLoginModal()">Entrar no Santuário</button>
   </div>
 </main>
 
 <section class="bento-section">
   <div class="bento-grid">
-    <div class="bento-card glass-panel card-athena">
+    <div class="bento-card glass-panel card-athena" appReactiveGlow>
       <div class="bento-icon text-gold-gradient">✧</div>
       <h3 class="bento-title text-gold-gradient">Atena</h3>
       <p class="bento-desc">
@@ -20,22 +20,44 @@
       </p>
     </div>
     
-    <div class="bento-card glass-panel card-hermes">
+    <div class="bento-card glass-panel card-hermes" appReactiveGlow>
       <div class="bento-icon text-gold-gradient">⚕</div>
       <h3 class="bento-title text-gold-gradient">Hermes</h3>
       <p class="bento-desc">Muito além de vídeos gravados. Onde alunos e professores conversam e evoluem em tempo real.</p>
     </div>
     
-    <div class="bento-card glass-panel card-cronos">
+    <div class="bento-card glass-panel card-cronos" appReactiveGlow>
       <div class="bento-icon text-gold-gradient">⧖</div>
       <h3 class="bento-title text-gold-gradient">Cronos</h3>
       <p class="bento-desc">O aprendizado no seu ritmo. Ferramentas inteligentes e elegantes de organização do tempo.</p>
     </div>
     
-    <div class="bento-card glass-panel card-midas">
+    <div class="bento-card glass-panel card-midas" appReactiveGlow>
       <div class="bento-icon text-gold-gradient">❖</div>
       <h3 class="bento-title text-gold-gradient">Olimpo</h3>
       <p class="bento-desc">Você no controle. Transações seguras e fluidas para criadores de conteúdo que elevam a régua do mercado.</p>
     </div>
   </div>
 </section>
+
+@if (isLoginModalOpen) {
+  <app-login-modal 
+    (close)="closeLoginModal()" 
+    (switchToRegister)="openRegisterModal()"
+    (switchToForgotPassword)="openForgotPasswordModal()">
+  </app-login-modal>
+}
+
+@if (isRegisterModalOpen) {
+  <app-register-modal 
+    (close)="closeRegisterModal()" 
+    (switchToLogin)="openLoginModal()">
+  </app-register-modal>
+}
+
+@if (isForgotPasswordModalOpen) {
+  <app-forgot-password-modal 
+    (close)="closeForgotPasswordModal()"
+    (switchToLogin)="openLoginModal()">
+  </app-forgot-password-modal>
+}

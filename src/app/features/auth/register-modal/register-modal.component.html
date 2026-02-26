@@ -1,0 +1,68 @@
+<div class="modal-backdrop" (click)="onClose()">
+  <div class="modal-container glass-panel" (click)="$event.stopPropagation()" appReactiveGlow>
+    <button class="close-btn" (click)="onClose()" aria-label="Fechar">✕</button>
+
+    <div class="modal-header">
+      <h2 class="modal-title font-serif text-gold-gradient">Iniciar Jornada</h2>
+      <p class="modal-subtitle">Qual é a sua vocação neste santuário?</p>
+    </div>
+
+    <!-- Organic Account Type Selection -->
+    <div class="account-type-selector">
+      <button 
+        type="button"
+        class="type-card" 
+        [class.selected]="selectedType === 'aprendiz'"
+        (click)="selectType('aprendiz')"
+        aria-label="Selecionar conta Aprendiz"
+      >
+        <span class="type-icon">✧</span>
+        <div class="type-info">
+          <span class="type-label">Aprendiz</span>
+          <span class="type-desc">Em busca de conhecimento em sua forma mais pura.</span>
+        </div>
+        <div class="selection-indicator"></div>
+      </button>
+
+      <button 
+        type="button"
+        class="type-card" 
+        [class.selected]="selectedType === 'mentor'"
+        (click)="selectType('mentor')"
+        aria-label="Selecionar conta Mentor"
+      >
+        <span class="type-icon">⌘</span>
+        <div class="type-info">
+          <span class="type-label">Mentor</span>
+          <span class="type-desc">Portador do ofício. Pronto para instigar mentes.</span>
+        </div>
+        <div class="selection-indicator"></div>
+      </button>
+    </div>
+
+    <form class="register-form">
+      <div class="form-group">
+        <label for="name">Nome Completo</label>
+        <input type="text" id="name" placeholder="Sua identidade no Santuário" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="cidadao@akademos.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-actions-extended">
+        <button type="submit" class="btn-primary">Criar Cadastro</button>
+      </div>
+    </form>
+    
+    <div class="modal-footer">
+      <p>Já possui as chaves? <a href="#" (click)="onSwitchToLogin($event)">Entrar</a></p>
+    </div>
+  </div>
+</div>
