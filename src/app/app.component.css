@@ -1,0 +1,181 @@
+.hero-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 800px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.1em;
+  margin-bottom: -0.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--text-primary);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-btn {
+  margin-top: 3rem;
+  background: transparent;
+  border: 1px solid var(--color-gold-base);
+  color: var(--color-gold-base);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  padding: 0.75rem 2.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-btn:hover {
+  background: var(--color-gold-base);
+  color: var(--bg-surface);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+}
+
+.bento-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(280px, auto));
+  gap: 2rem;
+}
+
+.bento-card {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.bento-icon {
+  display: inline-block;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--color-gold-light);
+  font-family: var(--font-serif);
+}
+
+.bento-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.bento-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.card-athena {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.card-athena .bento-icon {
+  font-size: 5rem;
+}
+
+.card-athena .bento-title {
+  font-size: 2.5rem;
+}
+
+.card-athena .bento-desc {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.card-hermes {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.card-cronos {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.card-midas {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-athena {
+    grid-column: span 2;
+  }
+  .card-hermes {
+    grid-column: span 2;
+  }
+  .card-cronos, .card-midas {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-card {
+    grid-column: span 1 !important;
+  }
+}
