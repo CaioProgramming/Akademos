@@ -14,8 +14,14 @@ export type AccountType = 'aprendiz' | 'mentor';
 export class RegisterModalComponent {
   @Output() close = new EventEmitter<void>();
   @Output() switchToLogin = new EventEmitter<void>();
+  @Output() registerSuccess = new EventEmitter<void>();
 
   selectedType: AccountType = 'aprendiz'; 
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.registerSuccess.emit();
+  }
 
   onClose() {
     this.close.emit();

@@ -1,57 +1,95 @@
+@if (!isLoggedIn) {
+<!-- Top Nav -->
+<nav class="top-nav glass-panel animate-fade-in animate-delay-long-1">
+  <div class="nav-brand">
+    <div class="brand-icon-mask shimmer-bg"></div>
+    <span class="shimmer-text">AKADEMOS</span>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn-primary" (click)="openLoginModal()">Login</button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
 <main class="hero-container">
   <div class="hero-content">
-    <h1 class="hero-title text-gold-gradient">AKADEMOS</h1>
-    <h2 class="hero-subtitle">O lugar definitivo para o seu aprendizado</h2>
-    <p class="hero-description">
-      Uma plataforma desenhada para quem busca conhecimento de verdade, sem distrações e com foco total na excelência.
+    <h3 class="hero-kicker text-gold-gradient animate-fade-in animate-delay-long-1">A ARTE DO APRENDIZADO</h3>
+    <h1 class="hero-title-massive animate-fade-in">
+      <span class="shimmer-text">AKADEMOS</span>
+    </h1>
+    <p class="hero-description animate-fade-in animate-delay-long-2">
+      Uma plataforma focada na excelência intelectual. Combinamos o rigor do pensamento 
+      clássico com tecnologia moderna para criar um ambiente de estudos sem distrações.
     </p>
-    <button class="hero-btn" (click)="openLoginModal()">Entrar no Santuário</button>
+    <div class="hero-actions animate-fade-in animate-delay-long-3">
+      <button class="hero-btn-primary" (click)="openRegisterModal()">
+        Entrar para a lista de espera <span class="arrow">→</span>
+      </button>
+    </div>
   </div>
 </main>
 
+<!-- Bento Grid Section -->
 <section class="bento-section">
+  <div class="section-heading animate-fade-in animate-delay-long-3">
+    <h2 class="section-title text-gold-gradient">Os Pilares do Conhecimento</h2>
+    <p class="section-subtitle">Uma base sólida para o seu desenvolvimento educacional.</p>
+  </div>
+
   <div class="bento-grid">
-    <div class="bento-card glass-panel card-athena" appReactiveGlow>
-      <div class="bento-icon text-gold-gradient">✧</div>
-      <h3 class="bento-title text-gold-gradient">Atena</h3>
+    <div class="bento-card glass-panel card-athena animate-fade-in animate-delay-long-4" appReactiveGlow>
+      <div class="icon-wrapper">
+        <div class="bento-icon-mask mask-athena shimmer-bg"></div>
+      </div>
+      <h3 class="bento-title text-gold-gradient">Curadoria Rigorosa</h3>
       <p class="bento-desc">
-        Curadoria de Mentes Brilhantes. <br><br>
-        Esqueça os conteúdos rasos. Aqui você tem acesso a uma biblioteca de excelência selecionada a dedo, feita para quem realmente deseja evoluir e dominar o seu ofício.
+        Esqueça os conteúdos rasos. Uma biblioteca viva selecionada meticulosamente, feita para quem deseja maestria no seu domínio de ofício.
       </p>
     </div>
     
-    <div class="bento-card glass-panel card-hermes" appReactiveGlow>
-      <div class="bento-icon text-gold-gradient">⚕</div>
-      <h3 class="bento-title text-gold-gradient">Hermes</h3>
-      <p class="bento-desc">Muito além de vídeos gravados. Onde alunos e professores conversam e evoluem em tempo real.</p>
+    <div class="bento-card glass-panel card-hermes animate-fade-in animate-delay-long-5" appReactiveGlow>
+      <div class="icon-wrapper">
+        <div class="bento-icon-mask mask-hermes shimmer-bg"></div>
+      </div>
+      <h3 class="bento-title text-gold-gradient">A Ágora Global</h3>
+      <p class="bento-desc">Muito além das aulas gravadas. Interações em tempo real que fomentam debates construtivos entre quem ensina e quem aprende.</p>
     </div>
     
-    <div class="bento-card glass-panel card-cronos" appReactiveGlow>
-      <div class="bento-icon text-gold-gradient">⧖</div>
-      <h3 class="bento-title text-gold-gradient">Cronos</h3>
-      <p class="bento-desc">O aprendizado no seu ritmo. Ferramentas inteligentes e elegantes de organização do tempo.</p>
+    <div class="bento-card glass-panel card-cronos animate-fade-in animate-delay-long-6" appReactiveGlow>
+      <div class="icon-wrapper">
+        <div class="bento-icon-mask mask-cronos shimmer-bg"></div>
+      </div>
+      <h3 class="bento-title text-gold-gradient">Domínio do Tempo</h3>
+      <p class="bento-desc">O aprendizado no seu ritmo. Ferramentas eficientes e quase invisíveis para gerenciar o foco e maximizar o seu estudo.</p>
     </div>
     
-    <div class="bento-card glass-panel card-midas" appReactiveGlow>
-      <div class="bento-icon text-gold-gradient">❖</div>
-      <h3 class="bento-title text-gold-gradient">Olimpo</h3>
-      <p class="bento-desc">Você no controle. Transações seguras e fluidas para criadores de conteúdo que elevam a régua do mercado.</p>
+    <div class="bento-card glass-panel card-midas animate-fade-in animate-delay-long-7" appReactiveGlow>
+      <div class="icon-wrapper">
+        <div class="bento-icon-mask mask-olimpo shimmer-bg"></div>
+      </div>
+      <h3 class="bento-title text-gold-gradient">Ecossistema de Mérito</h3>
+      <p class="bento-desc">Um sistema que honra o trabalho. Transações diretas e justas, recompensando professores por criarem conteúdos de alta performance.</p>
     </div>
   </div>
 </section>
+} @else {
+  <app-user-profile (logout)="onLogout()"></app-user-profile>
+}
 
 @if (isLoginModalOpen) {
   <app-login-modal 
     (close)="closeLoginModal()" 
     (switchToRegister)="openRegisterModal()"
-    (switchToForgotPassword)="openForgotPasswordModal()">
+    (switchToForgotPassword)="openForgotPasswordModal()"
+    (loginSuccess)="onLoginSuccess()">
   </app-login-modal>
 }
 
 @if (isRegisterModalOpen) {
   <app-register-modal 
     (close)="closeRegisterModal()" 
-    (switchToLogin)="openLoginModal()">
+    (switchToLogin)="openLoginModal()"
+    (registerSuccess)="onLoginSuccess()">
   </app-register-modal>
 }
 

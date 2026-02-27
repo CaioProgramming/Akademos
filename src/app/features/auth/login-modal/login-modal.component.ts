@@ -12,6 +12,12 @@ export class LoginModalComponent {
   @Output() close = new EventEmitter<void>();
   @Output() switchToRegister = new EventEmitter<void>();
   @Output() switchToForgotPassword = new EventEmitter<void>();
+  @Output() loginSuccess = new EventEmitter<void>();
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.loginSuccess.emit();
+  }
 
   onClose() {
     this.close.emit();

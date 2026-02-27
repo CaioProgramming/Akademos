@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { LoginModalComponent } from './features/auth/login-modal/login-modal.component';
 import { RegisterModalComponent } from './features/auth/register-modal/register-modal.component';
 import { ForgotPasswordModalComponent } from './features/auth/forgot-password-modal/forgot-password-modal.component';
+import { UserProfileComponent } from './features/profile/user-profile/user-profile.component';
 import { ReactiveGlowDirective } from './shared/directives/reactive-glow.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, ReactiveGlowDirective],
+  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -17,6 +18,17 @@ export class AppComponent {
   isLoginModalOpen = false;
   isRegisterModalOpen = false;
   isForgotPasswordModalOpen = false;
+  isLoggedIn = false;
+
+  onLoginSuccess() {
+    this.isLoggedIn = true;
+    this.closeLoginModal();
+    this.closeRegisterModal();
+  }
+
+  onLogout() {
+    this.isLoggedIn = false;
+  }
 
   openLoginModal() {
     this.isLoginModalOpen = true;

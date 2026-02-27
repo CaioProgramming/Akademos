@@ -13,11 +13,21 @@
   position: relative;
   width: 90%;
   max-width: 480px; /* Um pouco mais largo que o login */
+  max-height: 85vh; /* Safe zone vertical */
+  overflow-y: auto;
   padding: 40px;
   display: flex; flex-direction: column; gap: 24px;
   border-radius: var(--radius-lg);
   animation: slideUp var(--transition-smooth);
   background: var(--bg-surface);
+}
+
+@media (max-width: 600px) {
+  .modal-container {
+    padding: 24px;
+    gap: 20px;
+    max-height: 90vh;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

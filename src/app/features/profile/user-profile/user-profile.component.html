@@ -1,0 +1,53 @@
+<div class="profile-container" *ngIf="user">
+  <div class="profile-header glass-panel">
+    <div class="avatar-section">
+      <div class="avatar-ring">
+        <div class="avatar-placeholder text-gold-gradient">
+          {{ user.name.charAt(0) }}
+        </div>
+      </div>
+      <div class="avatar-info">
+        <h1 class="user-name font-serif">{{ user.name }}</h1>
+        <p class="user-role text-gold-gradient">
+          <span class="role-icon">{{ user.role === 'aprendiz' ? '✧' : '⌘' }}</span>
+          {{ user.role === 'aprendiz' ? 'Aprendiz' : 'Mentor' }} do Santuário
+        </p>
+        <p class="user-email">{{ user.email }}</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-secondary">Editar Perfil</button>
+      <button class="btn-logout" (click)="onLogout()">Deixar o Santuário</button>
+    </div>
+  </div>
+
+  <div class="profile-dashboard">
+    <div class="dashboard-stats glass-panel">
+      <h3 class="panel-title font-serif">Sua Jornada</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value font-serif text-gold-gradient">{{ user.completedCourses }}</span>
+          <span class="stat-label">Cursos Concluídos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value font-serif text-gold-gradient">{{ user.totalXp | number }}</span>
+          <span class="stat-label">Conhecimento (XP)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value font-serif text-gold-gradient">{{ user.joinedDate | date:'yyyy' }}</span>
+          <span class="stat-label">Ano de Iniciação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The rest of the dashboard layout can be generic placeholders for future courses inside the platform -->
+    <div class="dashboard-content glass-panel">
+      <h3 class="panel-title font-serif">Seu Progresso Atual</h3>
+      <div class="empty-state">
+        <span class="empty-icon text-gold-gradient">⧖</span>
+        <p class="empty-text">Seus estudos em progresso repousam aqui.</p>
+        <button class="btn-primary">Acessar a Biblioteca</button>
+      </div>
+    </div>
+  </div>
+</div>
