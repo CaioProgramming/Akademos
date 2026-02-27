@@ -96,6 +96,39 @@ a:hover {
   border-radius: var(--radius-glass);
   box-shadow: var(--shadow-glass);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  position: relative;
+}
+
+.glass-panel[appReactiveGlow]::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 2px; /* Espessura da borda dourada líquida */
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(255, 255, 255, 1) 0%, /* Feixe de luz puro no centro do mouse */
+    var(--color-gold-light) 10%, /* Brilho primário */
+    var(--color-gold-base) 30%,  /* Aura de contração dourada */
+    transparent 60%
+  );
+  filter: drop-shadow(0 0 12px var(--color-gold-base)); /* Efeito de espalhamento de luz para fora da linha (bloom) */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: source-out;
+  mask-composite: exclude;
+  opacity: 0.15;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.glass-panel[appReactiveGlow]:hover::after {
+  opacity: 1;
 }
 
 .glass-panel:hover {

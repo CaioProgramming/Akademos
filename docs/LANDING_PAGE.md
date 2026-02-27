@@ -16,24 +16,24 @@ No design anterior (os 10 cards "feijão com arroz"), listaríamos "Página de B
 Features base (Cadastro de Usuário, Login, Painel) **não brilham** na vitrine; elas dão suporte nas sombras. Vamos evidenciar apenas o que conecta o usuário ao propósito da plataforma, unindo as mecânicas em conceitos gregos (*Bento Cards*):
 
 ### Cartões do Bento Grid (As Virtudes de Akademos)
-*   **Atena (A Sabedoria, Curadoria e Persistência)**:
+*   **Curadoria Rigorosa (Anteriormente Atena)**:
     *   *Substitui/Abstrai:* Página de Busca, Cadastro de Cursos, Sistema de Avaliação.
-    *   *Copy (Exemplo):* "Curadoria de Mentes Brilhantes. Uma biblioteca de excelência forjada sem espaço para mediocridade."
-    *   *Símbolo/Visual:* Uma abstração de uma coruja ou um ramo de oliveira esculpido no vidro/ouro. Mostra o valor do curso com foco e elegância.
-*   **Hermes (A Conexão Translúcida e o Diálogo)**:
+    *   *Copy Atual:* "Esqueça os conteúdos rasos. Uma biblioteca viva selecionada meticulosamente, feita para quem deseja maestria no seu domínio de ofício."
+    *   *Símbolo/Visual:* Máscara SVG brilhante de uma Coruja Clássica com gradiente dourado.
+*   **A Ágora Global (Anteriormente Hermes)**:
     *   *Substitui/Abstrai:* Chat Profissional/Cliente, Videochamadas.
-    *   *Copy (Exemplo):* "Muito além de monólogos gravados. Onde mestres e discípulos dialogam em tempo real."
-    *   *Símbolo/Visual:* Asas sutis ou ondas sonoras douradas flutuando sobre uma interface de mensagens etérea.
-*   **Cronos (O Respeito ao Domínio do Tempo)**:
+    *   *Copy Atual:* "Muito além das aulas gravadas. Interações em tempo real que fomentam debates construtivos entre quem ensina e quem aprende."
+    *   *Símbolo/Visual:* Máscara SVG brilhante do Caduceu Flutuante.
+*   **Domínio do Tempo (Anteriormente Cronos)**:
     *   *Substitui/Abstrai:* Sistema de Agendamento.
-    *   *Copy (Exemplo):* "Seja mestre de suas horas. Sincronia perfeita para o aprendizado no seu tempo."
-    *   *Símbolo/Visual:* Uma ampulheta geométrica translúcida ou um labirinto, onde as datas e compromissos se organizam sozinhos no card.
-*   **Olimpo / Midas (A Valorização do Conhecimento)**:
+    *   *Copy Atual:* "O aprendizado no seu ritmo. Ferramentas eficientes e quase invisíveis para gerenciar o foco e maximizar o seu estudo."
+    *   *Símbolo/Visual:* Máscara SVG brilhante de uma Ampulheta Geométrica.
+*   **Ecossistema de Mérito (Anteriormente Olimpo / Midas)**:
     *   *Substitui/Abstrai:* Sistema de Pagamentos / Recebimentos e Dashboard de Ganhos.
-    *   *Copy (Exemplo):* "Valorize a erudição. Transações fluidas e imperceptíveis recompensando aqueles que elevam o padrão."
-    *   *Símbolo/Visual:* Elementos abstratos de ouro líquido ou colunas sólidas simbolizando a segurança financeira.
+    *   *Copy Atual:* "Um sistema que honra o trabalho. Transações diretas e justas, recompensando professores por criarem conteúdos de alta performance."
+    *   *Símbolo/Visual:* Máscara SVG brilhante de um emblema geométrico clássico.
 
-**O Oculto:** "Autenticação em Dois Fatores" e "Cadastro" são portas pesadas e seguras de carvalho que o usuário só descobre – e sente – ao decidir iniciar a jornada. Não precisamos exaltar a fechadura no catálogo, e sim o palácio.
+**O Oculto:** Nossos Modais de Cadastro, Login e Recuperação de Senha flutuam como painéis de vidro sobre o Templo. Eles implementam `max-height` e `overflow-y` para garantir respiro espacial ("Safe Zone") em dispositivos menores, sem quebrar a proporção áurea.
 
 ## 4. Estrutura Estratégica da Página (Flow)
 
