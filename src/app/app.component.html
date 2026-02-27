@@ -1,9 +1,11 @@
 <app-topbar 
   [isLoggedIn]="isLoggedIn"
+  [username]="username"
   (loginClick)="openLoginModal()"
   (logoutClick)="onLogout()"
   (navigateHome)="navigateHome()"
-  (navigateCatalog)="navigateToCatalog()">
+  (navigateCatalog)="navigateToCatalog()"
+  (navigateProfile)="navigateToProfile()">
 </app-topbar>
 
 <div class="main-content">

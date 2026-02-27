@@ -21,6 +21,7 @@ export class AppComponent {
   isRegisterModalOpen = false;
   isForgotPasswordModalOpen = false;
   isLoggedIn = false;
+  username = 'Aristóteles';
   
   private router = inject(Router);
 
@@ -52,6 +53,10 @@ export class AppComponent {
 
   navigateToCatalog() {
     this.router.navigate(['/catalogo']);
+  }
+  
+  navigateToProfile() {
+    this.router.navigate(['/perfil']);
   }
 
   openLoginModal() {

@@ -73,12 +73,12 @@
       <p class="fortress-subtitle">Segurança de nível de estado para sua propriedade intelectual e transações financeiras.</p>
     </div>
     
-    <div class="box-walls" #fortressWalls>
-      <!-- Elementos que representam uma estrutura se formando ou travando em volta do card -->
-      <div class="wall-element wall-top"></div>
-      <div class="wall-element wall-right"></div>
-      <div class="wall-element wall-bottom"></div>
-      <div class="wall-element wall-left"></div>
+    <div class="box-lock-container" #fortressWalls>
+      <!-- SVG que faz o contorno respeitando o radius -->
+      <svg class="lock-svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="lock-rect" x="0.5" y="0.5" width="99" height="99" rx="4" ry="4" pathLength="100"
+              fill="none" stroke="var(--color-gold-base)" stroke-width="1" />
+      </svg>
     </div>
   </div>
 </section>

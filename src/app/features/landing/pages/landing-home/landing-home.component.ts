@@ -163,7 +163,7 @@ export class LandingHomeComponent implements AfterViewInit, OnDestroy {
       ease: 'power1.out'
     });
 
-    // 2. Animação de Pin: Trava e fecha as paredes
+    // 2. Animação de Pin: Trava e "desenha" o contorno arredondado
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.fortressScene.nativeElement,
@@ -181,11 +181,22 @@ export class LandingHomeComponent implements AfterViewInit, OnDestroy {
       }
     });
 
-    const wallsNode = this.fortressWalls.nativeElement;
-    tl.to(wallsNode.querySelector('.wall-top'), { width: '100%', duration: 1 }, "lock");
-    tl.to(wallsNode.querySelector('.wall-right'), { height: '100%', duration: 1 }, "lock");
-    tl.to(wallsNode.querySelector('.wall-bottom'), { width: '100%', duration: 1 }, "lock");
-    tl.to(wallsNode.querySelector('.wall-left'), { height: '100%', duration: 1 }, "lock");
+    const lockRect = this.fortressWalls.nativeElement.querySelector('.lock-rect') as SVGGeometryElement;
+    if (lockRect) {
+      // Como usamos pathLength="100" no HTML, o SVG normaliza o comprimento total perfeitamente para 100
+      const length = 100; 
+      
+      gsap.set(lockRect, { 
+        strokeDasharray: length, 
+        strokeDashoffset: length 
+      });
+
+      tl.to(lockRect, {
+        strokeDashoffset: 0,
+        duration: 2,
+        ease: 'none'
+      });
+    }
 
     if (tl.scrollTrigger) {
       this.scrollTriggers.push(tl.scrollTrigger);
