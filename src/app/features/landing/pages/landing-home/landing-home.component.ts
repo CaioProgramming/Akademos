@@ -204,29 +204,62 @@ export class LandingHomeComponent implements AfterViewInit, OnDestroy {
   }
 
   private initScene5() {
-    // Scene 5: Engine (Frictionless UI Mockup)
-    const mockup = this.engineMockup.nativeElement.querySelector('.app-mockup');
+    // Cena 5: Sistema Solar Minimalista (The Engine)
+    const container = this.engineMockup.nativeElement;
+    const sun = container.querySelector('.solar-sun');
+    const orbits = container.querySelectorAll('.orbit');
+    const planetWrappers = container.querySelectorAll('.planet-wrapper');
+    const planets = container.querySelectorAll('.planet');
+
+    // Estado inicial: simples e centralizado
+    gsap.set([sun, ...Array.from(orbits), ...Array.from(planets)], { opacity: 0, scale: 0.95 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.engineScene.nativeElement,
-        start: 'top 60%',
-        end: 'bottom 80%',
+        start: 'top top',
+        end: '+=150%',
+        pin: true,
         scrub: 1
       }
     });
 
-    // O mockup rotaciona no eixo X e Y como se estivesse deitado e "levanta"
-    // parecendo que a UI está se ajustando suavemente para você.
-    if (mockup) {
-      tl.to(mockup, {
-        rotateX: 0,
-        y: 0,
-        scale: 1,
-        duration: 2,
-        ease: 'power2.out'
+    // Entrada suave e direta
+    tl.to([sun, ...Array.from(orbits)], {
+      opacity: 1,
+      scale: 1,
+      duration: 1.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+
+    // Rotação sutil do Sol
+    tl.to(sun, {
+      rotate: 360,
+      duration: 15,
+      ease: 'none'
+    }, 0);
+
+    // Órbitas rotacionando em velocidades harmônicas
+    planetWrappers.forEach((wrapper, i) => {
+      tl.to(wrapper, {
+        rotateZ: (i % 2 === 0 ? 360 : -360) * (0.5 + (i * 0.2)),
+        duration: 10,
+        ease: 'none'
+      }, 0);
+    });
+
+    // Brilho pulsante constante (independente do scroll)
+    planets.forEach((planet, i) => {
+      gsap.to(planet, {
+        boxShadow: '0 0 20px var(--color-gold-base)',
+        opacity: 0.8,
+        duration: 2 + i,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
       });
-    }
+    });
 
     if (tl.scrollTrigger) {
       this.scrollTriggers.push(tl.scrollTrigger);
