@@ -4,40 +4,39 @@
     "title": "A Arte da Retórica: Persuasão Clássica",
     "description": "Domine os princípios da retórica aristotélica e eleve sua capacidade de argumentação ao nível dos grandes oradores da Grécia Antiga.",
     "instructor": "Mentor Aristides",
-    "thumbnail": "assets/covers/rhetoric.jpg",
     "category": "Comunicação",
     "level": "Intermediário",
     "durationHours": 12,
-    "rating": 4.9
+    "rating": 4.9,
+    "isFeatured": true
   },
   {
     "id": "c2",
     "title": "Os Cálculos do Cosmos: Matemática Pura",
     "description": "Uma jornada pelos fundamentos da geometria Euclidiana até sua aplicação nas arquiteturas magnânimas modernas.",
     "instructor": "Mentor Arquimedes",
-    "thumbnail": "assets/covers/math.jpg",
     "category": "Ciência",
     "level": "Avançado",
     "durationHours": 24,
-    "rating": 5.0
+    "rating": 5.0,
+    "isFeatured": true
   },
   {
     "id": "c3",
     "title": "Filosofia Estoica para a Vida",
     "description": "Aprenda a aplicar o estoicismo de Sêneca e Marco Aurélio para focar no que você pode controlar e prosperar na incerteza.",
     "instructor": "Mentor Sêneca",
-    "thumbnail": "assets/covers/stoicism.jpg",
     "category": "Desenvolvimento Pessoal",
     "level": "Iniciante",
     "durationHours": 8,
-    "rating": 4.8
+    "rating": 4.8,
+    "isFeatured": true
   },
   {
     "id": "c4",
     "title": "Estratégia e Tática: O Tabuleiro de Atena",
     "description": "Fundamentos de estratégia inspirados pela Deusa da Sabedoria, aplicáveis nas decisões e negócios modernos.",
     "instructor": "Mentora Atena",
-    "thumbnail": "assets/covers/strategy.jpg",
     "category": "Negócios",
     "level": "Avançado",
     "durationHours": 15,
@@ -48,7 +47,6 @@
     "title": "Lógica Viva: A Teoria de Sócrates",
     "description": "Aprenda o método socrático para estruturar pensamento crítico, argumentações imbatíveis e descobrir a verdade através das perguntas estruturadas.",
     "instructor": "Mentor Sócrates",
-    "thumbnail": "assets/covers/socrates.jpg",
     "category": "Filosofia",
     "level": "Avançado",
     "durationHours": 18,
@@ -59,7 +57,6 @@
     "title": "A Oratória do Líder Moderno",
     "description": "Os pilares da comunicação eficaz e engajadora usados desde os tempos de Demóstenes até a liderança atual contemporânea.",
     "instructor": "Mentor Péricles",
-    "thumbnail": "assets/covers/leadership.jpg",
     "category": "Oratória",
     "level": "Iniciante",
     "durationHours": 6,

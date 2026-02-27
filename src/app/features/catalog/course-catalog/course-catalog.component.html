@@ -3,6 +3,15 @@
     <h1 class="catalog-title text-gold-gradient">O Templo do Saber</h1>
     <p class="catalog-subtitle">Explore conhecimentos ancestrais e contemporâneos em nossa curadoria de excelência.</p>
     
+    <div class="search-container glass-panel">
+      <span class="search-icon">⚲</span>
+      <input 
+        type="text" 
+        class="search-input text-gold-gradient" 
+        placeholder="Busque por título, mentor ou conhecimento..."
+        (input)="onSearch($event)">
+    </div>
+    
     <!-- Categorias / Filtros -->
     <div class="catalog-filters">
       @for (category of categories; track category) {
@@ -17,12 +26,38 @@
   </header>
 
   @if (!isLoading) {
+    <!-- Carrossel de Destaques -->
+    @if (searchQuery === '' && selectedCategory === 'Todos os Saberes' && featuredCourses.length > 0) {
+      <div class="featured-section animate-fade-in animate-delay-long-4">
+        <h2 class="section-subtitle mb-4">Em Destaque no Olimpo</h2>
+        <div class="featured-carousel">
+          @for (featured of featuredCourses; track featured.id) {
+            <article class="featured-card glass-panel" appReactiveGlow>
+              <div class="featured-thumbnail">
+                <div class="lambda-placeholder shimmer-bg"></div>
+              </div>
+              <div class="featured-content">
+                <span class="course-category text-gold-gradient">{{ featured.category }}</span>
+                <h3 class="featured-title">{{ featured.title }}</h3>
+                <p class="featured-description">{{ featured.description }}</p>
+                <div class="featured-footer">
+                  <span class="instructor-name">{{ featured.instructor }}</span>
+                  <button class="btn-primary-small">Começar Jornada</button>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    }
+  
     <div class="course-grid">
       @for (course of filteredCourses; track course.id) {
         <article class="course-card glass-panel" appReactiveGlow>
           <div class="course-thumbnail">
             <!-- Como não temos imagens reais, usamos um gradiente escuro com ícones/shapes e o nível do curso -->
             <div class="thumbnail-placeholder">
+              <div class="lambda-placeholder shimmer-bg"></div>
               <span class="level-badge">{{ course.level }}</span>
             </div>
             <div class="course-duration">

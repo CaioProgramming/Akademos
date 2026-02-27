@@ -92,14 +92,120 @@
   height: 200px;
   background: linear-gradient(145deg, rgba(20,20,22,1) 0%, rgba(35,35,40,1) 100%);
   border-bottom: 1px solid var(--border-glass);
-}
-
-.thumbnail-placeholder {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.lambda-placeholder {
+  width: 60px;
+  height: 60px;
+  -webkit-mask: url('/assets/lambda.svg') no-repeat center;
+  mask: url('/assets/lambda.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0.3;
+}
+
+.featured-section {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.featured-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.featured-card {
+  display: flex;
+  background: linear-gradient(145deg, rgba(30, 30, 35, 0.4), rgba(20, 20, 25, 0.8));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 220px;
+  transition: transform var(--transition-smooth);
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+}
+
+.featured-thumbnail {
+  width: 40%;
+  background: linear-gradient(120deg, rgba(212, 175, 55, 0.05), transparent);
+  border-right: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-content {
+  width: 60%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  margin: 0.5rem 0;
+}
+
+.featured-description {
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.featured-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.btn-primary-small {
+  background: var(--color-gold-base);
+  color: #111;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary-small:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+.thumbnail-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
 }
 

@@ -8,4 +8,5 @@ export interface Course {
   level: 'Iniciante' | 'Intermediário' | 'Avançado';
   durationHours: number;
   rating: number;
+  isFeatured?: boolean;
 }

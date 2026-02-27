@@ -16,15 +16,18 @@ export class CourseCatalogComponent implements OnInit {
   private courseService = inject(MockCourseService);
   
   allCourses: Course[] = [];
+  featuredCourses: Course[] = [];
   filteredCourses: Course[] = [];
   categories: string[] = [];
   selectedCategory: string = 'Todos os Saberes';
+  searchQuery: string = '';
   isLoading: boolean = true;
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {
       this.allCourses = courses;
       this.filteredCourses = courses;
+      this.featuredCourses = courses.filter(c => c.isFeatured);
       
       const uniqueCategories = new Set(courses.map(c => c.category));
       this.categories = ['Todos os Saberes', ...Array.from(uniqueCategories)];
@@ -33,13 +36,25 @@ export class CourseCatalogComponent implements OnInit {
     });
   }
 
+  onSearch(event: Event) {
+    this.searchQuery = (event.target as HTMLInputElement).value.toLowerCase().trim();
+    this.applyFilters();
+  }
+
   filterBy(category: string) {
     this.selectedCategory = category;
-    if (category === 'Todos os Saberes') {
-      this.filteredCourses = this.allCourses;
-    } else {
-      this.filteredCourses = this.allCourses.filter(c => c.category === category);
-    }
+    this.applyFilters();
+  }
+
+  private applyFilters() {
+    this.filteredCourses = this.allCourses.filter(course => {
+      const matchCategory = this.selectedCategory === 'Todos os Saberes' || course.category === this.selectedCategory;
+      const matchSearch = course.title.toLowerCase().includes(this.searchQuery) || 
+                          course.instructor.toLowerCase().includes(this.searchQuery) ||
+                          course.description.toLowerCase().includes(this.searchQuery);
+      
+      return matchCategory && matchSearch;
+    });
   }
 }
 
