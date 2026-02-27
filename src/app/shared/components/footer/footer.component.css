@@ -1,0 +1,117 @@
+.site-footer {
+  margin-top: 4rem;
+  padding: 4rem 4rem 2rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-glass);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.brand-icon-mask {
+  width: 32px;
+  height: 32px;
+  -webkit-mask: url('/assets/lambda.svg') no-repeat center;
+  mask: url('/assets/lambda.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  margin-bottom: 1rem;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.brand-slogan {
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.footer-links {
+  display: flex;
+  gap: 6rem;
+}
+
+.link-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.link-column h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.link-column a {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.link-column a:hover {
+  color: var(--color-gold-base);
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-glass);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.social-links a:hover {
+  color: var(--color-gold-base);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 3rem 1.5rem 2rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
