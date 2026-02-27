@@ -63,12 +63,29 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-base);
+  background: var(--bg-base);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url('/assets/marble-white.png');
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
-  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  transition: background var(--transition-smooth), color var(--transition-smooth);
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-base);
+    background-image: 
+      linear-gradient(rgba(15, 16, 20, 0.45), rgba(15, 16, 20, 0.45)), 
+      url('/assets/marble-dark.png');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
@@ -90,12 +107,12 @@ a:hover {
 
 .glass-panel {
   background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-glass);
   box-shadow: var(--shadow-glass);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), opacity 0.5s ease;
   position: relative;
 }
 
