@@ -227,12 +227,18 @@
 }
 
 .dropdown-item.option-danger {
-  color: #ff453a; /* Tom de vermelho do ecossistema Apple (Dark) */
+  color: var(--color-danger); /* Tom de vermelho do design system */
   font-weight: 500;
 }
 
 .dropdown-item.option-danger:hover {
-  background: rgba(255, 69, 58, 0.1);
+  background: rgba(234, 67, 53, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-item.option-danger:hover {
+    background: rgba(255, 69, 58, 0.1);
+  }
 }
 
 /* Animations */
