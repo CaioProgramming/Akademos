@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
 import { LoginModalComponent } from './features/auth/login-modal/login-modal.component';
 import { RegisterModalComponent } from './features/auth/register-modal/register-modal.component';
 import { ForgotPasswordModalComponent } from './features/auth/forgot-password-modal/forgot-password-modal.component';
-import { UserProfileComponent } from './features/profile/user-profile/user-profile.component';
 import { ReactiveGlowDirective } from './shared/directives/reactive-glow.directive';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
-import { CourseCatalogComponent } from './features/catalog/course-catalog/course-catalog.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { LandingHomeComponent } from './features/landing/pages/landing-home/landing-home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective, TopbarComponent, CourseCatalogComponent, FooterComponent],
+  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, ReactiveGlowDirective, TopbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -22,26 +21,42 @@ export class AppComponent {
   isRegisterModalOpen = false;
   isForgotPasswordModalOpen = false;
   isLoggedIn = false;
-  currentView: 'landing' | 'catalog' | 'profile' = 'landing';
+  username = 'Aristóteles';
+  
+  private router = inject(Router);
+
+  onOutletActivated(component: any) {
+    if (component instanceof LandingHomeComponent) {
+      component.openRegister.subscribe(() => this.openRegisterModal());
+    }
+  }
 
   onLoginSuccess() {
     this.isLoggedIn = true;
-    this.currentView = 'catalog';
+    this.router.navigate(['/catalogo']);
     this.closeLoginModal();
     this.closeRegisterModal();
   }
 
   onLogout() {
     this.isLoggedIn = false;
-    this.currentView = 'landing';
+    this.router.navigate(['/']);
   }
 
   navigateHome() {
-    this.currentView = this.isLoggedIn ? 'catalog' : 'landing';
+    if (this.isLoggedIn) {
+      this.router.navigate(['/catalogo']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   navigateToCatalog() {
-    this.currentView = 'catalog';
+    this.router.navigate(['/catalogo']);
+  }
+  
+  navigateToProfile() {
+    this.router.navigate(['/perfil']);
   }
 
   openLoginModal() {

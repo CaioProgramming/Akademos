@@ -9,10 +9,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TopbarComponent {
   @Input() isLoggedIn = false;
+  @Input() username = 'Aprendiz';
+  
   @Output() loginClick = new EventEmitter<void>();
   @Output() logoutClick = new EventEmitter<void>();
   @Output() navigateHome = new EventEmitter<void>();
   @Output() navigateCatalog = new EventEmitter<void>();
+  @Output() navigateProfile = new EventEmitter<void>();
 
   onLoginClick() {
     this.loginClick.emit();
@@ -20,6 +23,10 @@ export class TopbarComponent {
 
   onLogoutClick() {
     this.logoutClick.emit();
+  }
+
+  onProfileClick() {
+    this.navigateProfile.emit();
   }
 
   onLogoClick() {

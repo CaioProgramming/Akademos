@@ -32,14 +32,15 @@ Cada etapa será implementada de forma iterativa, garantindo a solidez antes de 
 
 ## 5. Etapas de Desenvolvimento (Roadmap)
 
-### Fase 1: Fundação e A Primeira Impressão
-*   **Setup Inicial:** Criação do projeto Angular, configuração de linting, formatação e arquitetura base.
-*   **Design System Base:** Configuração de tipografias, paleta de cores (mármore e dourado) e componentes globais (Navbar, Footer, Botões).
-*   **Criar a Landing Page:** Nossa primeira grande feature! Uma página de captura deslumbrante que introduz a estética grega/divina, com animações suaves e seções destacadas sobre a superioridade da Akademos.
+### Fase 1: Fundação e A Primeira Impressão - ✅ *Concluída*
+*   **Setup Inicial:** Criação do projeto Angular, configuração de linting, formatação e arquitetura base. ✅
+*   **Design System Base:** Configuração de tipografias, paleta de cores (mármore e dourado) e componentes globais (Navbar, Footer, Botões). ✅
+*   **A Jornada da Landing Page (Scrollytelling):** O desenvolvimento da Landing Page segue uma abordagem imersiva estilo *Apple Product Page*, guiando o usuário por 6 cenas principais através de *scroll-driven animations* (utilizando GSAP e ScrollTrigger). Implementado com refinamento em SVG para curvas e bordas dinâmicas. ✅
 
-### Fase 2: Identidade e Acesso (Autenticação)
-*   **Fluxo de Autenticação:** Login, Cadastro e Recuperação de Senha.
-*   **Perfil do Usuário (O Cidadão de Akademos):** Tela para professores e alunos, onde os deuses e aprendizes (metaforicamente) exibem seus conhecimentos e jornadas.
+### Fase 2: Identidade e Acesso (Autenticação) - ⏳ *Em Progresso / Perfil OK*
+*   **Fluxo de Autenticação:** Login, Cadastro e Recuperação de Senha (Modais integrados na Landing).
+*   **Perfil do Usuário (O Cidadão de Akademos):** Tela inicial de perfil implementada, com roteamento e menu de acesso rápido via avatar na Topbar. ✅
+
 
 ### Fase 3: O Templo do Saber (Exploração de Cursos & Curadoria) - ✅ *Catálogo Concluído*
 *   **Catálogo e Vitrine Magna:** Lista de cursos com cards elegantes "Glassmorphism", carrossel iterativo de "Destaques no Olimpo", sistema de busca unificada inteligente e listagem de "Mestres Renomados". ✅

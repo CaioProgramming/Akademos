@@ -1,0 +1,765 @@
+.hero-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 900px;
+  padding: 6rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-kicker {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title-massive {
+  font-size: clamp(4.5rem, 14vw, 9.5rem);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.hero-btn-primary {
+  background: var(--color-gold-base);
+  color: #111;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-btn-primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.hero-btn-primary .arrow {
+  transition: transform var(--transition-fast);
+}
+
+.hero-btn-primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-gold-base);
+}
+
+.play-icon {
+  font-size: 0.95rem;
+  color: var(--color-gold-base);
+}
+
+.bento-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(280px, auto));
+  gap: 2rem;
+}
+
+.bento-card {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.bento-icon-mask {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.mask-athena {
+  -webkit-mask: url('/assets/atena.svg') no-repeat center;
+  mask: url('/assets/atena.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.mask-hermes {
+  -webkit-mask: url('/assets/hermes.svg') no-repeat center;
+  mask: url('/assets/hermes.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.mask-cronos {
+  -webkit-mask: url('/assets/cronos.svg') no-repeat center;
+  mask: url('/assets/cronos.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.mask-olimpo {
+  -webkit-mask: url('/assets/olimpo.svg') no-repeat center;
+  mask: url('/assets/olimpo.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.bento-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.bento-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.card-athena {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.card-athena .icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+}
+
+.card-athena .bento-icon {
+  font-size: 3.5rem;
+}
+
+.card-athena .bento-title {
+  font-size: 2.5rem;
+}
+
+.card-athena .bento-desc {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.card-hermes {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.card-cronos {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.card-midas {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmerEffect {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.animate-delay-1 { animation-delay: 0.15s; }
+.animate-delay-2 { animation-delay: 0.3s; }
+.animate-delay-3 { animation-delay: 0.45s; }
+.animate-delay-4 { animation-delay: 0.6s; }
+.animate-delay-5 { animation-delay: 0.75s; }
+.animate-delay-6 { animation-delay: 0.9s; }
+
+.animate-delay-long-1 { animation-delay: 1.5s; }
+.animate-delay-long-2 { animation-delay: 2.0s; }
+.animate-delay-long-3 { animation-delay: 2.5s; }
+.animate-delay-long-4 { animation-delay: 2.7s; }
+.animate-delay-long-5 { animation-delay: 2.9s; }
+.animate-delay-long-6 { animation-delay: 3.1s; }
+.animate-delay-long-7 { animation-delay: 3.3s; }
+
+.shimmer-text {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-base) 0%,
+    var(--color-gold-dark) 20%,
+    var(--color-gold-light) 50%,
+    var(--color-gold-dark) 80%,
+    var(--color-gold-base) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerEffect 5s linear infinite;
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-athena {
+    grid-column: span 2;
+  }
+  .card-hermes {
+    grid-column: span 2;
+  }
+  .card-cronos, .card-midas {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-card {
+    grid-column: span 1 !important;
+  }
+}
+
+/* ====================================
+   SCENE 2: EXCELLENCE
+==================================== */
+.excellence-scene {
+  min-height: 120vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+/* O texto ficará ancorado (pinned) ou movido no GSAP, então mantemos centrado e com z-index alto */
+.excellence-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 800px;
+}
+
+.excellence-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  margin-bottom: 1.5rem;
+}
+
+.excellence-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+.excellence-gallery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none; /* Para não bloquear cliques se sobrepor botões no futuro */
+}
+
+/* Mockups das capas - estilo vidro jateado com bordas douradas sutis */
+.course-cover {
+  position: absolute;
+  width: min(280px, 40vw);
+  aspect-ratio: 2 / 3;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(212, 175, 55, 0.02) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex; /* Adicionado para centralizar a lambda */
+  align-items: center; /* Adicionado para centralizar a lambda */
+  justify-content: center; /* Adicionado para centralizar a lambda */
+}
+
+/* Base styling for lambda symbol reused from Catalog */
+.lambda-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lambda-placeholder::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-gold-base);
+  -webkit-mask: url('/assets/lambda.svg') no-repeat center;
+  mask: url('/assets/lambda.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0.6;
+}
+
+/* Configuração inicial de posições das capas para o efeito parallax atuar sobre elas */
+.cover-1 {
+  top: 10%;
+  left: 10%;
+  transform: rotate(-10deg);
+}
+
+.cover-2 {
+  top: 40%;
+  right: 5%;
+  transform: rotate(5deg);
+  width: min(320px, 45vw);
+}
+
+.cover-3 {
+  bottom: -10%;
+  left: 30%;
+  transform: rotate(8deg);
+}
+
+
+/* ====================================
+   SCENE 3: LEGACY
+==================================== */
+.legacy-scene {
+  min-height: 120vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.legacy-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 800px;
+}
+
+.legacy-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  margin-bottom: 1.5rem;
+}
+
+.legacy-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+.legacy-network {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Nodos da constelação/rede como Estrelas (Sparks) */
+.node-wrapper {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Removido o filtro daqui para evitar o clipping 'box' no safari/chrome */
+}
+
+.star-svg {
+  width: 100%; 
+  height: 100%;
+  display: block;
+  /* Glow suave e com espaçamento (padding) para evitar o 'corte' retangular do filtro no navegador */
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+  padding: 12px;
+  margin: -12px;
+  will-change: filter;
+  color: var(--color-gold-base);
+}
+
+.node-wrapper.n-1 { top: 25%; left: 20%; width: 25px; height: 25px; }
+.node-wrapper.n-2 { top: 15%; right: 25%; width: 35px; height: 35px; }
+.node-wrapper.n-3 { bottom: 30%; left: 25%; width: 30px; height: 30px; }
+.node-wrapper.n-4 { bottom: 20%; right: 15%; width: 20px; height: 20px; }
+
+
+/* ====================================
+   SCENE 4: FORTRESS
+==================================== */
+.fortress-scene {
+  min-height: 120vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 2rem;
+  z-index: 5;
+  background: transparent;
+  transition: background-color 0.6s ease;
+}
+
+.fortress-scene.is-locked {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.fortress-box {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  padding: 4rem 3rem;
+  background: var(--bg-surface); /* Adaptável por padrão */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  box-shadow: var(--shadow-glass);
+}
+
+@media (prefers-color-scheme: light) {
+  .fortress-box {
+    border-color: rgba(212, 175, 55, 0.3); /* Destaque dourado sutil no light */
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .fortress-box {
+    background: rgba(22, 24, 29, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+.shield-icon {
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+}
+
+.shield-icon path {
+  transition: fill 0.6s ease, filter 0.6s ease;
+  fill: transparent;
+}
+
+.fortress-scene.is-locked .shield-icon path {
+  fill: var(--color-gold-base);
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+}
+
+.fortress-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  margin-bottom: 1.5rem;
+}
+
+.fortress-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-primary); /* Forçando cor primária para maior contraste no card */
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Paredes formando o 'cofre' que tranca o Card */
+.box-walls {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 15;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+/* SVG Lock Effect */
+.box-lock-container {
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  z-index: 15;
+  pointer-events: none;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.lock-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.lock-rect {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
+  /* Iniciará com dashoffset igual ao perímetro total no TS */
+}
+
+
+
+/* ====================================
+   SCENE 5: THE ENGINE
+==================================== */
+.engine-scene {
+  min-height: 120vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.engine-content {
+  text-align: center;
+  z-index: 10;
+  max-width: 800px;
+  margin-bottom: 4rem;
+}
+
+.engine-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  margin-bottom: 1.5rem;
+}
+
+.engine-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+.engine-visual-container {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  z-index: 5;
+  overflow: visible;
+}
+
+.solar-system {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.solar-sun {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at center, var(--color-gold-light), var(--color-gold-base));
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(212, 175, 55, 0.6), 0 0 150px rgba(212, 175, 55, 0.2);
+  z-index: 10;
+  animation: simpleScale 4s infinite ease-in-out;
+}
+
+@keyframes simpleScale {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.2); }
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tamanhos concêntricos e equilibrados */
+.orbit-1 { width: 180px; height: 180px; }
+.orbit-2 { width: 300px; height: 300px; }
+.orbit-3 { width: 440px; height: 440px; }
+.orbit-4 { width: 600px; height: 600px; }
+
+.planet-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet {
+  position: absolute;
+  background: var(--color-gold-light);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--color-gold-base), 0 0 30px rgba(212, 175, 55, 0.4);
+  /* Remover o translate anterior para evitar conflitos com a rotação do wrapper */
+}
+
+.p-1 { width: 8px; height: 8px; top: -5px; left: 50%; transform: translateX(-50%); }
+.p-2 { width: 12px; height: 12px; top: 50%; right: -6px; transform: translateY(-50%); }
+.p-3 { width: 10px; height: 10px; bottom: -5px; left: 50%; transform: translateX(-50%); }
+.p-4 { width: 8px; height: 8px; top: 50%; left: -4px; transform: translateY(-50%); }
+.p-5 { width: 14px; height: 14px; top: 20%; right: 7%; }
+
+
+@keyframes liquidPulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.15); }
+}
+
+@media (prefers-color-scheme: light) {
+  .solar-sun {
+    background: radial-gradient(circle at 35% 35%, #fff, var(--color-gold-base));
+    box-shadow: 0 0 80px rgba(212, 175, 55, 0.3);
+  }
+  .orbit { border-color: rgba(212, 175, 55, 0.25); }
+}
+
+

@@ -1,13 +1,33 @@
 <nav class="top-nav glass-panel animate-fade-in animate-delay-long-1">
-  <div class="nav-brand" (click)="onLogoClick()" style="cursor: pointer;" title="Akademos">
-    <div class="brand-icon-mask shimmer-bg"></div>
+  <div class="nav-left">
+    <div class="nav-brand" (click)="onLogoClick()" style="cursor: pointer;" title="Akademos">
+      <div class="brand-icon-mask shimmer-bg"></div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" (click)="onCatalogClick()">Catálogo</button>
+    </div>
   </div>
+  
   <div class="nav-actions">
-    <button class="nav-link" (click)="onCatalogClick()">Catálogo</button>
     @if (!isLoggedIn) {
       <button class="nav-btn-primary" (click)="onLoginClick()">Login</button>
     } @else {
-      <button class="nav-btn-secondary" (click)="onLogoutClick()">Sair</button>
+      <!-- User Profile Dropdown Menu Menu -->
+      <div class="user-menu-wrapper">
+        <button class="user-avatar-btn" (click)="onProfileClick()">
+          <div class="lambda-placeholder small-avatar"></div>
+        </button>
+        <div class="user-dropdown glass-panel">
+          <div class="dropdown-header">
+            <span class="dropdown-name">Olá, {{ username }}</span>
+            <span class="dropdown-email">usuario&#64;akademos.com</span>
+          </div>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item option-danger" (click)="onLogoutClick()">
+            <span>Sair da conta</span>
+          </button>
+        </div>
+      </div>
     }
   </div>
 </nav>
