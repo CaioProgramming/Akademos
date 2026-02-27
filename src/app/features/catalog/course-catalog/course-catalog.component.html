@@ -7,7 +7,7 @@
       <span class="search-icon">⚲</span>
       <input 
         type="text" 
-        class="search-input text-gold-gradient" 
+        class="search-input" 
         placeholder="Busque por título, mentor ou conhecimento..."
         (input)="onSearch($event)">
     </div>
@@ -30,22 +30,46 @@
     @if (searchQuery === '' && selectedCategory === 'Todos os Saberes' && featuredCourses.length > 0) {
       <div class="featured-section animate-fade-in animate-delay-long-4">
         <h2 class="section-subtitle mb-4">Em Destaque no Olimpo</h2>
-        <div class="featured-carousel">
-          @for (featured of featuredCourses; track featured.id) {
-            <article class="featured-card glass-panel" appReactiveGlow>
-              <div class="featured-thumbnail">
-                <div class="lambda-placeholder shimmer-bg"></div>
-              </div>
-              <div class="featured-content">
-                <span class="course-category text-gold-gradient">{{ featured.category }}</span>
-                <h3 class="featured-title">{{ featured.title }}</h3>
-                <p class="featured-description">{{ featured.description }}</p>
-                <div class="featured-footer">
-                  <span class="instructor-name">{{ featured.instructor }}</span>
-                  <button class="btn-primary-small">Começar Jornada</button>
+        
+        <div class="carousel-container" (mouseenter)="stopCarousel()" (mouseleave)="startCarousel()">
+          
+          <div class="carousel-track">
+            @for (featured of featuredCourses; track featured.id; let i = $index) {
+              <article 
+                class="featured-card glass-panel" 
+                [class.active]="i === activeCarouselIndex"
+                [class.prev]="i === (activeCarouselIndex - 1 + featuredCourses.length) % featuredCourses.length"
+                [class.next]="i === (activeCarouselIndex + 1) % featuredCourses.length"
+                (click)="goToCarouselItem(i)"
+                appReactiveGlow>
+                
+                <div class="featured-thumbnail">
+                  <div class="lambda-placeholder shimmer-bg"></div>
                 </div>
-              </div>
-            </article>
+                <div class="featured-content">
+                  <span class="course-category text-gold-gradient">{{ featured.category }}</span>
+                  <h3 class="featured-title">{{ featured.title }}</h3>
+                  <p class="featured-description">{{ featured.description }}</p>
+                  <div class="featured-footer">
+                    <span class="instructor-name">{{ featured.instructor }}</span>
+                    <button class="btn-primary-small">Começar Jornada</button>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+
+        </div>
+
+        <!-- Indicadores (Dots) -->
+        <div class="carousel-dots">
+          @for (featured of featuredCourses; track featured.id; let i = $index) {
+            <button 
+              class="carousel-dot" 
+              [class.active]="i === activeCarouselIndex"
+              (click)="goToCarouselItem(i)"
+              aria-label="Ir para destaque">
+            </button>
           }
         </div>
       </div>

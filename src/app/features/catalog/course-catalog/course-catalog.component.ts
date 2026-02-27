@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MockCourseService } from '../../../core/services/mock-course.service';
 import { Course } from '../../../core/models/course.model';
@@ -12,7 +12,7 @@ import { ReactiveGlowDirective } from '../../../shared/directives/reactive-glow.
   templateUrl: './course-catalog.component.html',
   styleUrl: './course-catalog.component.css'
 })
-export class CourseCatalogComponent implements OnInit {
+export class CourseCatalogComponent implements OnInit, OnDestroy {
   private courseService = inject(MockCourseService);
   
   allCourses: Course[] = [];
@@ -22,6 +22,9 @@ export class CourseCatalogComponent implements OnInit {
   selectedCategory: string = 'Todos os Saberes';
   searchQuery: string = '';
   isLoading: boolean = true;
+  
+  activeCarouselIndex: number = 0;
+  private carouselInterval: any;
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {
@@ -33,7 +36,43 @@ export class CourseCatalogComponent implements OnInit {
       this.categories = ['Todos os Saberes', ...Array.from(uniqueCategories)];
       
       this.isLoading = false;
+      this.startCarousel();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.stopCarousel();
+  }
+
+  // Carousel Methods
+  startCarousel() {
+    this.stopCarousel(); // Ensure no duplicates
+    this.carouselInterval = setInterval(() => {
+      this.nextCarouselItem();
+    }, 5000);
+  }
+
+  stopCarousel() {
+    if (this.carouselInterval) {
+      clearInterval(this.carouselInterval);
+    }
+  }
+
+  nextCarouselItem() {
+    if (this.featuredCourses.length > 0) {
+      this.activeCarouselIndex = (this.activeCarouselIndex + 1) % this.featuredCourses.length;
+    }
+  }
+
+  prevCarouselItem() {
+    if (this.featuredCourses.length > 0) {
+      this.activeCarouselIndex = (this.activeCarouselIndex - 1 + this.featuredCourses.length) % this.featuredCourses.length;
+    }
+  }
+
+  goToCarouselItem(index: number) {
+    this.activeCarouselIndex = index;
+    this.startCarousel(); // Restart timer
   }
 
   onSearch(event: Event) {
@@ -51,7 +90,9 @@ export class CourseCatalogComponent implements OnInit {
       const matchCategory = this.selectedCategory === 'Todos os Saberes' || course.category === this.selectedCategory;
       const matchSearch = course.title.toLowerCase().includes(this.searchQuery) || 
                           course.instructor.toLowerCase().includes(this.searchQuery) ||
-                          course.description.toLowerCase().includes(this.searchQuery);
+                          course.description.toLowerCase().includes(this.searchQuery) ||
+                          course.category.toLowerCase().includes(this.searchQuery) ||
+                          course.level.toLowerCase().includes(this.searchQuery);
       
       return matchCategory && matchSearch;
     });
