@@ -131,8 +131,7 @@
 .course-thumbnail {
   position: relative;
   height: 200px;
-  background: linear-gradient(145deg, rgba(20,20,22,1) 0%, rgba(35,35,40,1) 100%);
-  border-bottom: 1px solid var(--border-glass);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,11 +141,18 @@
 .lambda-placeholder {
   width: 60px;
   height: 60px;
+  background-color: var(--color-gold-base);
   -webkit-mask: url('/assets/lambda.svg') no-repeat center;
   mask: url('/assets/lambda.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  opacity: 0.3;
+  opacity: 0.8;
+}
+
+.lambda-placeholder.small {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
 }
 
 .featured-section {
@@ -161,15 +167,22 @@
   margin-bottom: 2rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.glow-title {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+  color: var(--color-gold-light);
+}
+
 .carousel-container {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
-  height: 320px;
-  perspective: 1000px;
-  overflow: hidden;
+  height: 400px;
   padding: 2rem 0;
 }
 
@@ -180,14 +193,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d;
 }
 
 .featured-card {
   position: absolute;
   width: 90%;
-  max-width: 650px;
-  height: 250px;
+  max-width: 750px;
+  height: 300px;
   display: flex;
   background: linear-gradient(145deg, rgba(30, 30, 35, 0.9), rgba(20, 20, 25, 1));
   border-radius: var(--radius-lg);
@@ -200,7 +212,7 @@
 }
 
 .featured-card.active {
-  transform: translateX(0) scale(1) translateZ(0);
+  transform: translateX(0) scale(1);
   opacity: 1;
   visibility: visible;
   z-index: 5;
@@ -209,7 +221,7 @@
 }
 
 .featured-card.prev {
-  transform: translateX(-40%) scale(0.85) translateZ(-100px);
+  transform: translateX(-55%) scale(0.85);
   opacity: 0.5;
   visibility: visible;
   z-index: 2;
@@ -217,7 +229,7 @@
 }
 
 .featured-card.next {
-  transform: translateX(40%) scale(0.85) translateZ(-100px);
+  transform: translateX(55%) scale(0.85);
   opacity: 0.5;
   visibility: visible;
   z-index: 2;
@@ -230,8 +242,7 @@
 
 .featured-thumbnail {
   width: 40%;
-  background: linear-gradient(120deg, rgba(212, 175, 55, 0.05), transparent);
-  border-right: 1px solid var(--border-glass);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,11 +265,11 @@
 .featured-description {
   font-family: var(--font-sans);
   color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-grow: 1;
@@ -267,8 +278,23 @@
 .featured-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-top: auto;
+  gap: 1rem;
+}
+
+.price-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.course-price {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-gold-base);
 }
 
 .btn-primary-small {
@@ -295,7 +321,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .level-badge {
@@ -380,7 +409,7 @@
 .course-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-glass);
 }
@@ -396,6 +425,9 @@
   height: 32px;
   border-radius: 50%;
   border: 1px solid var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .instructor-name {
@@ -446,6 +478,99 @@
 .carousel-dot.active {
   background: var(--color-gold-base);
   width: 30px;
+}
+
+/* --- Top Mentors Section --- */
+.mentors-section {
+  margin-bottom: 4rem;
+}
+
+.mentors-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-dark) rgba(255, 255, 255, 0.05);
+  margin: -1rem -0.5rem; /* Compensar o padding extra para alinhar à esquerda */
+}
+
+.mentors-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.mentors-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.mentors-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dark);
+  border-radius: 4px;
+}
+
+.mentor-card {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: rgba(20, 20, 25, 0.6);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-smooth);
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.mentor-avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold-base);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mentor-avatar-large .lambda-placeholder {
+  width: 30px;
+  height: 30px;
+}
+
+.mentor-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+
+.mentor-subjects {
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.mentor-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.mentor-rating {
+  color: var(--color-gold-light);
 }
 
 .animate-fade-in {

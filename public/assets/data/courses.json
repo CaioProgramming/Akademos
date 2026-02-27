@@ -8,7 +8,8 @@
     "level": "Intermediário",
     "durationHours": 12,
     "rating": 4.9,
-    "isFeatured": true
+    "isFeatured": true,
+    "price": 120.00
   },
   {
     "id": "c2",
@@ -19,7 +20,8 @@
     "level": "Avançado",
     "durationHours": 24,
     "rating": 5.0,
-    "isFeatured": true
+    "isFeatured": true,
+    "price": 250.00
   },
   {
     "id": "c3",
@@ -30,7 +32,8 @@
     "level": "Iniciante",
     "durationHours": 8,
     "rating": 4.8,
-    "isFeatured": true
+    "isFeatured": true,
+    "price": 80.00
   },
   {
     "id": "c4",
@@ -40,7 +43,8 @@
     "category": "Negócios",
     "level": "Avançado",
     "durationHours": 15,
-    "rating": 4.9
+    "rating": 4.9,
+    "price": 150.00
   },
   {
     "id": "c5",
@@ -50,7 +54,8 @@
     "category": "Filosofia",
     "level": "Avançado",
     "durationHours": 18,
-    "rating": 5.0
+    "rating": 5.0,
+    "price": 180.00
   },
   {
     "id": "c6",
@@ -60,6 +65,7 @@
     "category": "Oratória",
     "level": "Iniciante",
     "durationHours": 6,
-    "rating": 4.7
+    "rating": 4.7,
+    "price": 60.00
   }
 ]

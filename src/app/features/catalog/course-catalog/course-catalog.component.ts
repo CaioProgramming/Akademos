@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MockCourseService } from '../../../core/services/mock-course.service';
-import { Course } from '../../../core/models/course.model';
+import { Course, Mentor } from '../../../core/models/course.model';
 import { Observable } from 'rxjs';
 import { ReactiveGlowDirective } from '../../../shared/directives/reactive-glow.directive';
 
@@ -19,6 +19,7 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
   featuredCourses: Course[] = [];
   filteredCourses: Course[] = [];
   categories: string[] = [];
+  topMentors: Mentor[] = [];
   selectedCategory: string = 'Todos os Saberes';
   searchQuery: string = '';
   isLoading: boolean = true;
@@ -37,6 +38,10 @@ export class CourseCatalogComponent implements OnInit, OnDestroy {
       
       this.isLoading = false;
       this.startCarousel();
+    });
+
+    this.courseService.getTopMentors().subscribe(mentors => {
+      this.topMentors = mentors;
     });
   }
 
