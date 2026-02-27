@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,13 +21,9 @@
 }
 
 .nav-brand {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  letter-spacing: 0.05em;
+  justify-content: center;
   transition: opacity var(--transition-fast);
 }
 
@@ -36,13 +32,12 @@
 }
 
 .brand-icon-mask {
-  width: 28px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   -webkit-mask: url('/assets/lambda.svg') no-repeat center;
   mask: url('/assets/lambda.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  margin-right: 8px;
 }
 
 .nav-actions {
