@@ -3,19 +3,22 @@
     <h1 class="catalog-title text-gold-gradient">O Templo do Saber</h1>
     <p class="catalog-subtitle">Explore conhecimentos ancestrais e contemporâneos em nossa curadoria de excelência.</p>
     
-    <!-- Categorias / Filtros (Mock visual por enquanto) -->
+    <!-- Categorias / Filtros -->
     <div class="catalog-filters">
-      <button class="filter-btn active">Todos os Saberes</button>
-      <button class="filter-btn">Filosofia</button>
-      <button class="filter-btn">Oratória</button>
-      <button class="filter-btn">Estratégia</button>
-      <button class="filter-btn">Ciências</button>
+      @for (category of categories; track category) {
+        <button 
+          class="filter-btn" 
+          [class.active]="category === selectedCategory"
+          (click)="filterBy(category)">
+          {{ category }}
+        </button>
+      }
     </div>
   </header>
 
-  @if (courses$ | async; as courses) {
+  @if (!isLoading) {
     <div class="course-grid">
-      @for (course of courses; track course.id) {
+      @for (course of filteredCourses; track course.id) {
         <article class="course-card glass-panel" appReactiveGlow>
           <div class="course-thumbnail">
             <!-- Como não temos imagens reais, usamos um gradiente escuro com ícones/shapes e o nível do curso -->
