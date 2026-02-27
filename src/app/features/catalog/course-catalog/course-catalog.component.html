@@ -3,23 +3,114 @@
     <h1 class="catalog-title text-gold-gradient">O Templo do Saber</h1>
     <p class="catalog-subtitle">Explore conhecimentos ancestrais e contemporâneos em nossa curadoria de excelência.</p>
     
-    <!-- Categorias / Filtros (Mock visual por enquanto) -->
+    <div class="search-container glass-panel">
+      <span class="search-icon">⚲</span>
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Busque por título, mentor ou conhecimento..."
+        (input)="onSearch($event)">
+    </div>
+    
+    <!-- Categorias / Filtros -->
     <div class="catalog-filters">
-      <button class="filter-btn active">Todos os Saberes</button>
-      <button class="filter-btn">Filosofia</button>
-      <button class="filter-btn">Oratória</button>
-      <button class="filter-btn">Estratégia</button>
-      <button class="filter-btn">Ciências</button>
+      @for (category of categories; track category) {
+        <button 
+          class="filter-btn" 
+          [class.active]="category === selectedCategory"
+          (click)="filterBy(category)">
+          {{ category }}
+        </button>
+      }
     </div>
   </header>
 
-  @if (courses$ | async; as courses) {
+  @if (!isLoading) {
+    <!-- Carrossel de Destaques -->
+    @if (searchQuery === '' && selectedCategory === 'Todos os Saberes' && featuredCourses.length > 0) {
+      <div class="featured-section animate-fade-in animate-delay-long-4">
+        <h2 class="section-subtitle mb-4 text-center glow-title">Em Destaque no Olimpo</h2>
+        
+        <div class="carousel-container" (mouseenter)="stopCarousel()" (mouseleave)="startCarousel()">
+          
+          <div class="carousel-track">
+            @for (featured of featuredCourses; track featured.id; let i = $index) {
+              <article 
+                class="featured-card glass-panel" 
+                [class.active]="i === activeCarouselIndex"
+                [class.prev]="i === (activeCarouselIndex - 1 + featuredCourses.length) % featuredCourses.length"
+                [class.next]="i === (activeCarouselIndex + 1) % featuredCourses.length"
+                (click)="goToCarouselItem(i)"
+                appReactiveGlow>
+                
+                <div class="featured-thumbnail">
+                  <div class="lambda-placeholder"></div>
+                </div>
+                <div class="featured-content">
+                  <span class="course-category text-gold-gradient">{{ featured.category }}</span>
+                  <h3 class="featured-title">{{ featured.title }}</h3>
+                  <p class="featured-description">{{ featured.description }}</p>
+                  <div class="featured-footer">
+                    <div class="instructor">
+                      <div class="instructor-avatar">
+                        <div class="lambda-placeholder small"></div>
+                      </div>
+                      <span class="instructor-name">{{ featured.instructor }}</span>
+                    </div>
+                    <div class="price-action">
+                      <span class="course-price">{{ featured.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+                      <button class="btn-primary-small">Começar Jornada</button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+
+        </div>
+
+        <!-- Indicadores (Dots) -->
+        <div class="carousel-dots">
+          @for (featured of featuredCourses; track featured.id; let i = $index) {
+            <button 
+              class="carousel-dot" 
+              [class.active]="i === activeCarouselIndex"
+              (click)="goToCarouselItem(i)"
+              aria-label="Ir para destaque">
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Top Mentors Section -->
+      <div class="mentors-section animate-fade-in animate-delay-long-4">
+        <h2 class="section-subtitle mb-4">Mestres Renomados</h2>
+        <div class="mentors-scroll-container">
+          @for (mentor of topMentors; track mentor.id) {
+            <div class="mentor-card glass-panel" appReactiveGlow>
+              <div class="mentor-avatar-large">
+                <div class="lambda-placeholder"></div>
+              </div>
+              <h3 class="mentor-name">{{ mentor.name }}</h3>
+              <p class="mentor-subjects text-gold-gradient">{{ mentor.subjects }}</p>
+              <div class="mentor-stats">
+                <span class="mentor-rating">★ {{ mentor.rating }} ({{ mentor.reviewCount }})</span>
+                <span class="mentor-rate">{{ mentor.hourlyRate | currency:'BRL':'symbol':'1.2-2' }}/h</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  
+    <h2 class="section-subtitle mb-4">Todos os Títulos</h2>
     <div class="course-grid">
-      @for (course of courses; track course.id) {
+      @for (course of filteredCourses; track course.id) {
         <article class="course-card glass-panel" appReactiveGlow>
           <div class="course-thumbnail">
             <!-- Como não temos imagens reais, usamos um gradiente escuro com ícones/shapes e o nível do curso -->
             <div class="thumbnail-placeholder">
+              <div class="lambda-placeholder"></div>
               <span class="level-badge">{{ course.level }}</span>
             </div>
             <div class="course-duration">
@@ -38,10 +129,15 @@
             
             <div class="course-footer">
               <div class="instructor">
-                <div class="instructor-avatar shimmer-bg"></div>
+                <div class="instructor-avatar">
+                  <div class="lambda-placeholder small"></div>
+                </div>
                 <span class="instructor-name">{{ course.instructor }}</span>
               </div>
-              <button class="btn-enroll">Explorar</button>
+              <div class="price-action">
+                <span class="course-price">{{ course.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+                <button class="btn-enroll">Explorar</button>
+              </div>
             </div>
           </div>
         </article>

@@ -41,9 +41,12 @@ Cada etapa será implementada de forma iterativa, garantindo a solidez antes de 
 *   **Fluxo de Autenticação:** Login, Cadastro e Recuperação de Senha.
 *   **Perfil do Usuário (O Cidadão de Akademos):** Tela para professores e alunos, onde os deuses e aprendizes (metaforicamente) exibem seus conhecimentos e jornadas.
 
-### Fase 3: O Templo do Saber (Exploração de Cursos)
-*   **Dashboard e Catálogo:** Lista de cursos com cards elegantes, filtros avançados e busca inteligente.
-*   **Detalhes do Curso:** Uma página inspiradora que converte o visitante em aluno, com descrições, vídeo introdutório e avaliações.
+### Fase 3: O Templo do Saber (Exploração de Cursos & Curadoria) - ✅ *Catálogo Concluído*
+*   **Catálogo e Vitrine Magna:** Lista de cursos com cards elegantes "Glassmorphism", carrossel iterativo de "Destaques no Olimpo", sistema de busca unificada inteligente e listagem de "Mestres Renomados". ✅
+*   **Detalhes do Curso:** Uma página inspiradora que converte o visitante em aluno, com descrições, vídeo introdutório e avaliações. ⏳ *(Planejado)*
+
+### Fase 3.5: O Oráculo (Dashboard de Progressão e Insights) - 📍 *Próximo Grande TODO*
+*   Um dashboard unificado e avançado para Aprendizes e Mentores acompanharem o progresso, engajamento e jornada intelectual. O layout e a estratégia de gamificação para essa tela ainda exigirão uma sessão densa de Brainstorming criativo e arquitetural.
 
 ### Fase 4: O Anfiteatro (Consumo de Conteúdo)
 *   **Player de Cursos:** O ambiente principal de aprendizado. Com comentários nativos, divisões por módulos e anotações atreladas ao tempo do vídeo.

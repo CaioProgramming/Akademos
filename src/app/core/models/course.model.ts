@@ -8,4 +8,15 @@ export interface Course {
   level: 'Iniciante' | 'Intermediário' | 'Avançado';
   durationHours: number;
   rating: number;
+  isFeatured?: boolean;
+  price: number;
+}
+
+export interface Mentor {
+  id: string;
+  name: string;
+  subjects: string;
+  rating: number;
+  reviewCount: number;
+  hourlyRate: number;
 }
