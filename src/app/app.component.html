@@ -1,15 +1,12 @@
-@if (!isLoggedIn) {
-<!-- Top Nav -->
-<nav class="top-nav glass-panel animate-fade-in animate-delay-long-1">
-  <div class="nav-brand">
-    <div class="brand-icon-mask shimmer-bg"></div>
-    <span class="shimmer-text">AKADEMOS</span>
-  </div>
-  <div class="nav-actions">
-    <button class="nav-btn-primary" (click)="openLoginModal()">Login</button>
-  </div>
-</nav>
+<app-topbar 
+  [isLoggedIn]="isLoggedIn"
+  (loginClick)="openLoginModal()"
+  (logoutClick)="onLogout()"
+  (navigateHome)="navigateHome()"
+  (navigateCatalog)="navigateToCatalog()">
+</app-topbar>
 
+@if (currentView === 'landing') {
 <!-- Hero Section -->
 <main class="hero-container">
   <div class="hero-content">
@@ -72,8 +69,10 @@
     </div>
   </div>
 </section>
-} @else {
+} @else if (currentView === 'profile') {
   <app-user-profile (logout)="onLogout()"></app-user-profile>
+} @else if (currentView === 'catalog') {
+  <app-course-catalog></app-course-catalog>
 }
 
 @if (isLoginModalOpen) {

@@ -1,0 +1,116 @@
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-glass);
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .top-nav { padding: 0 1.5rem; }
+}
+
+.nav-brand {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-brand:hover {
+  opacity: 0.8;
+}
+
+.brand-icon-mask {
+  width: 28px;
+  height: 32px;
+  -webkit-mask: url('/assets/lambda.svg') no-repeat center;
+  mask: url('/assets/lambda.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  margin-right: 8px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-gold-light);
+}
+
+.nav-btn-primary {
+  background: var(--color-gold-base);
+  color: #111;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.nav-btn-primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+.nav-btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.nav-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-gold-base);
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-delay-long-1 { animation-delay: 0.5s; }

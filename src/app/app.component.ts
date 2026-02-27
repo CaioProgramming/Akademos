@@ -5,11 +5,13 @@ import { RegisterModalComponent } from './features/auth/register-modal/register-
 import { ForgotPasswordModalComponent } from './features/auth/forgot-password-modal/forgot-password-modal.component';
 import { UserProfileComponent } from './features/profile/user-profile/user-profile.component';
 import { ReactiveGlowDirective } from './shared/directives/reactive-glow.directive';
+import { TopbarComponent } from './shared/components/topbar/topbar.component';
+import { CourseCatalogComponent } from './features/catalog/course-catalog/course-catalog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective],
+  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective, TopbarComponent, CourseCatalogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -19,15 +21,26 @@ export class AppComponent {
   isRegisterModalOpen = false;
   isForgotPasswordModalOpen = false;
   isLoggedIn = false;
+  currentView: 'landing' | 'catalog' | 'profile' = 'landing';
 
   onLoginSuccess() {
     this.isLoggedIn = true;
+    this.currentView = 'catalog';
     this.closeLoginModal();
     this.closeRegisterModal();
   }
 
   onLogout() {
     this.isLoggedIn = false;
+    this.currentView = 'landing';
+  }
+
+  navigateHome() {
+    this.currentView = this.isLoggedIn ? 'catalog' : 'landing';
+  }
+
+  navigateToCatalog() {
+    this.currentView = 'catalog';
   }
 
   openLoginModal() {

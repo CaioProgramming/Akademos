@@ -1,0 +1,55 @@
+<div class="catalog-container animate-fade-in">
+  <header class="catalog-header animate-fade-in animate-delay-long-1">
+    <h1 class="catalog-title text-gold-gradient">O Templo do Saber</h1>
+    <p class="catalog-subtitle">Explore conhecimentos ancestrais e contemporâneos em nossa curadoria de excelência.</p>
+    
+    <!-- Categorias / Filtros (Mock visual por enquanto) -->
+    <div class="catalog-filters">
+      <button class="filter-btn active">Todos os Saberes</button>
+      <button class="filter-btn">Filosofia</button>
+      <button class="filter-btn">Oratória</button>
+      <button class="filter-btn">Estratégia</button>
+      <button class="filter-btn">Ciências</button>
+    </div>
+  </header>
+
+  @if (courses$ | async; as courses) {
+    <div class="course-grid">
+      @for (course of courses; track course.id) {
+        <article class="course-card glass-panel" appReactiveGlow>
+          <div class="course-thumbnail">
+            <!-- Como não temos imagens reais, usamos um gradiente escuro com ícones/shapes e o nível do curso -->
+            <div class="thumbnail-placeholder">
+              <span class="level-badge">{{ course.level }}</span>
+            </div>
+            <div class="course-duration">
+              <span>⧖ {{ course.durationHours }}h</span>
+            </div>
+          </div>
+          
+          <div class="course-content">
+            <div class="course-meta">
+              <span class="course-category text-gold-gradient">{{ course.category }}</span>
+              <span class="course-rating">★ {{ course.rating }}</span>
+            </div>
+            
+            <h2 class="course-title">{{ course.title }}</h2>
+            <p class="course-description">{{ course.description }}</p>
+            
+            <div class="course-footer">
+              <div class="instructor">
+                <div class="instructor-avatar shimmer-bg"></div>
+                <span class="instructor-name">{{ course.instructor }}</span>
+              </div>
+              <button class="btn-enroll">Explorar</button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="loading-state">
+      <div class="shimmer-text">Consultando os oráculos...</div>
+    </div>
+  }
+</div>
