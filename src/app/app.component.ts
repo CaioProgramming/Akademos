@@ -7,11 +7,12 @@ import { UserProfileComponent } from './features/profile/user-profile/user-profi
 import { ReactiveGlowDirective } from './shared/directives/reactive-glow.directive';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
 import { CourseCatalogComponent } from './features/catalog/course-catalog/course-catalog.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective, TopbarComponent, CourseCatalogComponent],
+  imports: [RouterOutlet, LoginModalComponent, RegisterModalComponent, ForgotPasswordModalComponent, UserProfileComponent, ReactiveGlowDirective, TopbarComponent, CourseCatalogComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
